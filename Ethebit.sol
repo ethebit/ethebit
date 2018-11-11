@@ -106,6 +106,9 @@ contract Ethebit is Ownable{
         require(msg.value >= minimum);
         address _investor = msg.sender;
         uint256 currentDay = now;
+        if (currentDay < 1542240000) { //Thu, 15 Nov 2018 00:00:00 GMT
+            revert();
+        }
         if (investments[_investor] == 0) {
             countInvestor = countInvestor.add(1);
         }
